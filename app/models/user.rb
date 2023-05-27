@@ -19,4 +19,5 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :email, :username, presence: true
   validates :email, :username, uniqueness: true
+  has_many :blarghs, foreign_key: :author_id, dependent: :destroy
 end

@@ -31,6 +31,7 @@ gem "bootsnap", require: false
 # gem "rack-cors"
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'hirb', '~> 0.7.3'
+gem "pry-byebug"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
