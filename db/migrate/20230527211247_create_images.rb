@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateImages < ActiveRecord::Migration[7.0]
   def change
     create_table :images do |t|
@@ -6,6 +8,6 @@ class CreateImages < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-    add_index :images, [:imageable_type, :imageable_id]
+    add_index :images, %i[imageable_type imageable_id]
   end
 end
