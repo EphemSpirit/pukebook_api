@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
         new_user.password = "password"
 
         expect{ new_user.save }.to change(User, :count).by(0)
-        expect(new_user.errors.full_messages).to eq(["Email has already been taken", "Email has already been taken", "Username has already been taken"])
+        expect(new_user.errors.full_messages).to eq(["Email has already been taken", "Username has already been taken"])
       end
     end
   end
