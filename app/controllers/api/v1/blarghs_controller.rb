@@ -1,11 +1,14 @@
 class Api::V1::BlarghsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_blargh, only: [:show, :destroy]
 
   def index
     @blarghs = User.first.blarghs.all
-    binding.pry
     render json: { blarghs: @blarghs, status: :ok }
+  end
+
+  def show
+    render json: { blargh: @blargh, status: :ok }
   end
 
   def create
@@ -27,5 +30,9 @@ class Api::V1::BlarghsController < ApplicationController
 
     def blargh_params
       params.require(:blargh).permit(:body, :author_id)
+    end
+
+    def set_blargh
+      @blargh = Blargh.find(params[:id])
     end
 end
