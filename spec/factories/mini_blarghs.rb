@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :blargh do
+  factory :mini_blargh do
+    body { 'MyText' }
     author_id { create(:user).id }
-    body { 'Test blargh' }
+    blargh_id { create(:blargh).id }
   end
 end
