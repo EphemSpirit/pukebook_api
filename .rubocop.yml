@@ -9,6 +9,7 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
     - 'db/schema.rb'
+    - 'config/**/*.rb'
 
 Layout/LineLength:
   Enabled: false
@@ -31,4 +32,26 @@ Style/RedundantConstantBase:
   Enabled: false
 
 Style/FetchEnvVar:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/migrate/*'
+
+Style/WordArray:
+  Enabled: true
+  Exclude:
+    - 'db/schema.rb'
+
+Style/NumericLiterals:
+  Enabled: true
+  Exclude:
+    - 'db/schema.rb'
+
+Layout/EmptyLineAfterMagicComment:
   Enabled: false
