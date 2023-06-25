@@ -54,5 +54,10 @@ Style/NumericLiterals:
   Exclude:
     - 'db/schema.rb'
 
+Style/SymbolArray:
+  Enabled: true
+  Exclude:
+    - 'config/routes.rb'
+
 Layout/EmptyLineAfterMagicComment:
   Enabled: false

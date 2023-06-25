@@ -16,10 +16,13 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :api do
     namespace :v1 do
-      resources :users, only: [:show]
-      resources :blarghs, except: %i[update edit] do
-        resources :mini_blarghs, only: %i[create destroy]
+      resources :users, only: [:show] do
+        resources :blarghs, only: [:create, :update, :edit, :destroy] do
+          resources :mini_blarghs, only: [:create, :destroy]
+        end
       end
+
+      resources :blarghs, only: [:index]
 
       get '/current_user', to: 'current_user#index'
     end

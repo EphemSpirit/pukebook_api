@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'devise/jwt/test_helpers'
 
 RSpec.describe Api::V1::BlarghsController, type: :request do
   before(:each) do
@@ -12,7 +13,7 @@ RSpec.describe Api::V1::BlarghsController, type: :request do
     describe 'GET /users/:id/blarghs' do
       it 'returns ok' do
         sign_in user
-        get '/api/v1//blarghs'
+        get '/api/v1/blarghs'
         expect(response).to have_http_status(:ok)
       end
     end
@@ -23,6 +24,7 @@ RSpec.describe Api::V1::BlarghsController, type: :request do
     describe 'POST /users/:id/blarghs' do
       it 'returns 201' do
         sign_in user
+
         params = {
           blargh: {
             author_id: user.id,
@@ -30,7 +32,7 @@ RSpec.describe Api::V1::BlarghsController, type: :request do
           }
         }
 
-        post '/api/v1//blarghs', params: params
+        post "/api/v1/users/#{user.id}/blarghs", params: params, headers: { Authorization: "Bearer #{user.jti}" }
 
         expect(JSON.parse(response.body)['status']).to eq('created')
       end
@@ -44,7 +46,7 @@ RSpec.describe Api::V1::BlarghsController, type: :request do
           }
         }
 
-        post '/api/v1//blarghs', params: params
+        post "/api/v1/users/#{user.id}/blarghs", params: params, headers: { Authorization: "Bearer #{user.jti}" }
 
         expect(JSON.parse(response.body)['status']).to eq('unprocessable_entity')
       end
@@ -57,7 +59,7 @@ RSpec.describe Api::V1::BlarghsController, type: :request do
     describe 'DELETE /api/v1/users/:id/blargh/:id' do
       it 'returns no content' do
         sign_in user
-        delete "/api/v1//blarghs/#{blargh.id}"
+        delete "/api/v1//users/#{user.id}/blarghs/#{blargh.id}", headers: { Authorization: "Bearer #{user.jti}" }
         expect(JSON.parse(response.body)['status']).to eq('no_content')
       end
     end
