@@ -3,7 +3,7 @@
 module Api
   module V1
     class BlarghsController < ApplicationController
-      before_action :authenticate_user!
+      before_action :authenticate_user!, except: %i[index]
       before_action :set_blargh, only: %i[show destroy]
 
       def index

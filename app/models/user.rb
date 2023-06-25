@@ -15,9 +15,11 @@ class User < ApplicationRecord
   # Will have a dashboard
   # will have a profile picture
   # photo albums??
+  include Devise::JWT::RevocationStrategies::JTIMatcher
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :jwt_authenticatable, jwt_revocation_strategy: self
 
   validates :first_name, :last_name, :email, :username, presence: true
   validates :email, :username, uniqueness: true

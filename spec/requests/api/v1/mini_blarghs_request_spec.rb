@@ -22,7 +22,7 @@ RSpec.describe Api::V1::MiniBlarghsController, type: :request do
 
         sign_in user
 
-        post "/api/v1/blarghs/#{blargh.id}/mini_blarghs", params: params
+        post "/api/v1/users/#{user.id}/blarghs/#{blargh.id}/mini_blarghs", params: params, headers: { Authorization: "Bearer #{user.jti}" }
 
         expect(JSON.parse(response.body)['status']).to eq('created')
       end
@@ -37,7 +37,7 @@ RSpec.describe Api::V1::MiniBlarghsController, type: :request do
       it 'returns no content' do
         sign_in user
 
-        delete "/api/v1/blarghs/#{blargh.id}/mini_blarghs/#{mini_blargh.id}"
+        delete "/api/v1/users/#{user.id}/blarghs/#{blargh.id}/mini_blarghs/#{mini_blargh.id}", headers: { Authorization: "Bearer #{user.jti}" }
 
         expect(JSON.parse(response.body)['status']).to eq('no_content')
       end
