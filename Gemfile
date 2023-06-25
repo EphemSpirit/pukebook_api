@@ -33,6 +33,7 @@ gem 'bootsnap', require: false
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'devise-jwt', '~> 0.11.0'
 gem 'hirb', '~> 0.7.3'
+gem 'jsonapi-serializer'
 gem 'pry-byebug'
 gem "rack-cors"
 gem 'rubocop', '~> 1.51'
