@@ -16,6 +16,7 @@ Layout/LineLength:
 
 Metrics/MethodLength:
   Enabled: true
+  Max: 20
   Exclude:
     - 'bin/bundle'
 

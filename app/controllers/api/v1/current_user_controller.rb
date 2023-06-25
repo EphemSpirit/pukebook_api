@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Api
-  module v1
+  module V1
     class CurrentUserController < ApplicationController
       beofre_action :authenticate_user!
 
